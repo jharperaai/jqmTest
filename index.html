@@ -20,19 +20,32 @@
     <script type="text/javascript" src="jquery.mobile-1.0.1.js"></script>
 </head>
 <body>
-<div data-role="page" data-theme="b">
+<div data-role="page" data-theme="b" class="index">
     <script type="text/javascript">
-        function test()
-        {
-            alert('index test');
-        }
+        var page;
+
+        $('.index').on('pagebeforeshow', function(event, ui){
+            function testPage()
+            {
+                this.test=test;
+                function test()
+                {
+                    alert('index test');
+                }
+            }
+            page = new testPage();
+        });
+
+        $('.index').on('pagebeforehide', function(event, ui){
+            page = null;
+        });
     </script>
     <div id="header" data-role="header">
-        <h1>header</h1>
+        <h1>index</h1>
     </div>
     <div data-role="content" style="text-align: center;">
-        <a data-role="button" href="javascript:test();">test</a>
-        <a data-role="button" href="page2.html">Page 2</a>
+        <a data-role="button" href="javascript:page.test();">test</a>
+        <a data-role="button" href="page2.html">page 2</a>
     </div>
     <div data-role="footer">
         footer

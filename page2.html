@@ -4,18 +4,33 @@
     <title>JQM Test</title>
 </head>
 <body>
-<div data-role="page" data-theme="b" data-add-back-btn="true">
+<div data-role="page" data-theme="b" data-add-back-btn="true" class="page2">
     <script type="text/javascript">
-        function test()
-        {
-            alert('page2 test');
-        }
+        var page;
+
+        $('.page2').on('pagebeforeshow', function(event, ui){
+            function testPage()
+            {
+                this.test=test;
+                function test()
+                {
+                    //alert('page2 test');
+                    alert($('#stuff').text());
+                }
+            }
+            page = new testPage();
+        });
+
+        $('.page2').on('pagebeforehide', function(event, ui){
+            page = null;
+        });
     </script>
     <div id="header" data-role="header">
-        <h1>header</h1>
+        <h1>page 2</h1>
     </div>
     <div data-role="content" style="text-align: center;">
-        <a data-role="button" href="javascript:test();">test</a>
+        <a data-role="button" href="javascript:page.test();">test</a>
+        <div id="stuff">some stuff here</div>
     </div>
     <div data-role="footer">
         footer
