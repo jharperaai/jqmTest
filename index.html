@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JQM Test</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" type="text/css" href="jquery.mobile-1.0.1.css" />
+
+    <script type="text/javascript" src="jquery-1.7.1.js"></script>
+    <script type="text/javascript">
+        $(document).bind("mobileinit", function(){
+            $.support.cors = true;
+            $.mobile.allowCrossDomainPages = true;
+            $.mobile.pushStateEnabled = false;
+            //$.mobile.ajaxEnabled = false;
+        });
+    </script>
+    <script type="text/javascript" src="jquery.mobile-1.0.1.js"></script>
+</head>
+<body>
+<div data-role="page" data-theme="b">
+    <script type="text/javascript">
+        function test()
+        {
+            alert('index test');
+        }
+    </script>
+    <div id="header" data-role="header">
+        <h1>header</h1>
+    </div>
+    <div data-role="content" style="text-align: center;">
+        <a data-role="button" href="javascript:test();">test</a>
+        <a data-role="button" href="page2.html">Page 2</a>
+    </div>
+    <div data-role="footer">
+        footer
+    </div>
+</div>
+</body>
+</html>
